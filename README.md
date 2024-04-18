@@ -1,4 +1,4 @@
 
 
 # Connectivity Example
-Connecting to ledger device
+Connecting and interacting with a ledger device.
