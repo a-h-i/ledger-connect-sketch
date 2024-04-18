@@ -15,10 +15,10 @@ export async function displayEthereumAddress() {
 
 
 export async function displayBtcAddress() {
-    const transport = TransportWebHID.create();
+    const transport = await TransportWebHID.create();
     listen(log => console.log(log))
 
-    const appBtc = new AppBtc({ transport, currency: "bitcoin" });
+    const appBtc = new AppBtc({ transport });
     const { bitcoinAddress: address } = await appBtc.getWalletPublicKey(
       "44'/0'/0'/0/0",
       { verify: false, format: "legacy"}
