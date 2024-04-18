@@ -1,0 +1,40 @@
+{
+  "name": "ledger-connect-test",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "dev": "parcel src/index.html"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@eslint/js": "^9.0.0",
+    "buffer": "^6.0.3",
+    "eslint": "^9.0.0",
+    "events": "^3.1.0",
+    "globals": "^15.0.0",
+    "parcel": "^2.12.0",
+    "process": "^0.11.10",
+    "stream-browserify": "^3.0.0",
+    "string_decoder": "^1.3.0"
+  },
+  "dependencies": {
+    "@ledgerhq/cryptoassets": "^12.1.0",
+    "@ledgerhq/devices": "^8.3.0",
+    "@ledgerhq/domain-service": "^1.1.20",
+    "@ledgerhq/evm-tools": "^1.0.18",
+    "@ledgerhq/hw-app-btc": "^10.2.4",
+    "@ledgerhq/hw-app-eth": "^6.36.0",
+    "@ledgerhq/hw-transport-webhid": "^6.28.6",
+    "@ledgerhq/hw-transport-webusb": "^6.28.6",
+    "@ledgerhq/logs": "^6.12.0",
+    "core-js": "^3.37.0"
+  },
+  "alias": {
+    "@ledgerhq/devices": "@ledgerhq/devices/lib-es",
+    "@ledgerhq/evm-tools": "@ledgerhq/evm-tools/lib-es",
+    "@ledgerhq/domain-service": "@ledgerhq/domain-service/lib-es",
+    "@ledgerhq/cryptoassets": "@ledgerhq/cryptoassets/lib-es"
+  }
+}
