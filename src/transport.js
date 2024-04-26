@@ -37,3 +37,9 @@ export async function quitCurrentlyRunningApplicaiton() {
         throw new Error('Operation Failed');
     }
 }
+
+export async function openApplication(applicationName) {
+    const applicationNameLength = applicationName.length;
+    const transport = await TransportWebUSB.create();
+    const response = await transport.send(0xe0, 0xd8, 0x00, 0x00, Buffer.from(applicationName, 'ascii'))
+}

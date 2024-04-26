@@ -2,7 +2,7 @@ import 'core-js/actual';
 import { listen } from "@ledgerhq/logs";
 
 import { displayBtcAddress, displayEthereumAddress } from './addr_display';
-import { getCurrentlyRunningModule, quitCurrentlyRunningApplicaiton } from './transport'
+import { getCurrentlyRunningModule, quitCurrentlyRunningApplicaiton, openApplication } from './transport'
 listen(log => console.log(log))
 
 // App usage
@@ -14,3 +14,9 @@ document.getElementById('getBtcAddress').addEventListener('click', displayBtcAdd
 
 document.getElementById('getRunningModuleInfo').addEventListener('click', getCurrentlyRunningModule)
 document.getElementById('quitCurrentModule').addEventListener('click', quitCurrentlyRunningApplicaiton);
+
+document.getElementById('openAppForm').addEventListener('submit', (event) => {
+    openApplication(document.getElementById('appName').value)
+
+    event.preventDefault();
+})
