@@ -20,6 +20,20 @@ export async function getCurrentlyRunningModule() {
     const versionEndIndex = componentNameEndIndex + 1 + versionLength;
     const version = response.slice(componentNameEndIndex + 1, versionEndIndex).toString('ascii');
 
+    const statusCode = (response[response.length - 2] << 8 ) | response[response.length - 1];
+    if (statusCode !== 0x9000) {
+        throw new Error('Operation Failed')
+    }
+
     document.getElementById('runningModuleInfo').innerHTML = `Application: ${componentName} - Version: ${version}`
 }
 
+
+
+export async function quitCurrentlyRunningApplicaiton() {
+    const transport = await TransportWebUSB.create();
+    const response = await transport.send(0xb0, 0xa7, 0x00, 0x00);
+    if (response.toString('hex') !== '9000' ) {
+        throw new Error('Operation Failed');
+    }
+}
