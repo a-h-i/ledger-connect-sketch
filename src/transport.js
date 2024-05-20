@@ -6,7 +6,7 @@ import TransportWebHID from "@ledgerhq/hw-transport-webhid";
 
 export async function getCurrentlyRunningModule() {
     const transport = await TransportWebHID.create();
-    const response = await transport.send(0xb0, 0x01, 0x00, 0x00);
+    const response = await transport.send(0x80, 0x01, 0x00, 0x00);
     if (response[0] !== 1) {
         console.error('Unsupported response format')
     }
