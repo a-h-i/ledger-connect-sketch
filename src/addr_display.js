@@ -55,3 +55,17 @@ export async function displayBtcAddress() {
     document.getElementById('address').innerHTML = address;
     await transport.close();
 }
+
+
+export async function tariPubAlpha() {
+  const transport = await TransportWebHID.create()
+  const buffer = Buffer.alloc(9);
+  buffer[0] = 4;
+  buffer.writeUInt32LE(60, 1);
+  buffer.writeUInt32LE(0, 5);
+  const response = await transport.send(0x80, 0x03, 0, 0, buffer);
+  console.log(response.length);
+  console.log(response.toString('hex'));
+
+  await transport.close();
+}

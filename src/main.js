@@ -1,14 +1,14 @@
 import 'core-js/actual';
 import { listen } from "@ledgerhq/logs";
 
-import { displayBtcAddress, displayEthereumAddress, getTariAddress } from './addr_display';
+import { displayBtcAddress, displayEthereumAddress, getTariAddress, tariPubAlpha } from './addr_display';
 import { getCurrentlyRunningModule, quitCurrentlyRunningApplicaiton, openApplication } from './transport'
 listen(log => console.log(log))
 
 // App usage
 document.getElementById('getEthAddress').addEventListener('click', displayEthereumAddress);
 document.getElementById('getBtcAddress').addEventListener('click', displayBtcAddress)
-document.getElementById('getTariAddress').addEventListener('click', getTariAddress)
+document.getElementById('getTariAddress').addEventListener('click', tariPubAlpha)
 
 
 // APDU tests 
