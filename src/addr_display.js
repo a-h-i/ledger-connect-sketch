@@ -2,7 +2,7 @@ import { listen } from "@ledgerhq/logs";
 import AppEth from "@ledgerhq/hw-app-eth";
 import AppBtc from "@ledgerhq/hw-app-btc";
 import TransportWebHID from "@ledgerhq/hw-transport-webhid";
-
+import { Buffer } from "buffer";
 
 function splitPath(path) {
   const paths = [];
@@ -64,6 +64,26 @@ export async function tariPubAlpha() {
   buffer.writeUInt32LE(60, 1);
   buffer.writeUInt32LE(0, 5);
   const response = await transport.send(0x80, 0x03, 0, 0, buffer);
+  console.log(response.length);
+  console.log(response.toString('hex'));
+
+  await transport.close();
+}
+
+
+export async function tariPublicKey() {
+  const transport = await TransportWebHID.create()
+  const buffer = Buffer.alloc(1 + 3 * 8);
+  buffer[0] = 3 * 8;
+
+  // account 
+  buffer.writeBigUInt64LE(60n, 1);
+  // key index
+  buffer.writeBigUInt64LE(0n, 9);
+  // key type (1-4)
+  buffer.writeBigUInt64LE(1n,  17);
+
+  const response = await transport.send(0x80, 0x04, 0, 0, buffer);
   console.log(response.length);
   console.log(response.toString('hex'));
 
